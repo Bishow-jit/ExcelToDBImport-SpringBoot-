@@ -1,15 +1,19 @@
 package com.example.ExceltoDIImport.Model;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 
 @Entity
 @Data
 public class Product {
+
     @Id
-    private  Integer productId;
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    private  Long id;
 
     private  String productName;
 
@@ -18,4 +22,14 @@ public class Product {
     private  double productPrice;
 
     private  String productCode;
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @jakarta.persistence.Id
+    public Long getId() {
+        return id;
+    }
 }

@@ -23,20 +23,23 @@ public class ExcelHelper {
 
         try{
             XSSFWorkbook workbook=new XSSFWorkbook(is);
-            XSSFSheet sheet=workbook.getSheet("data");
+            XSSFSheet sheet=workbook.getSheet("Sheet1");
             boolean first = true;
             for (Row row: sheet) {
                 if (first) {
-                    first = false;
-                    continue;
-                }
-                Product product = new Product();
-                product.setProductName(row.getCell(1).getStringCellValue());
-                product.setProductDesc(row.getCell(2).getStringCellValue());
-                product.setProductPrice(row.getCell(3).getNumericCellValue());
-                product.setProductCode(row.getCell(4).getStringCellValue());
+                        first = false;
+                        continue;
+                    }
+                    Product product = new Product();
+                    product.setId((long) row.getCell(0).getNumericCellValue());
+                    product.setProductName(row.getCell(1).getStringCellValue());
+                    product.setProductDesc(row.getCell(2).getStringCellValue());
+                    product.setProductPrice(row.getCell(3).getNumericCellValue());
+                    product.setProductCode(row.getCell(4).getStringCellValue());
 
-                productList.add(product);
+                    productList.add(product);
+
+
             }
 
 
